@@ -16,4 +16,4 @@ Download the mod dll and put it into plugins folder. Download the Asset zip arch
 
 ## Dependencies
 
-Requires BSML, AssetBundleLoadingTools for it to work.
+Requires BSML, SiraUtil and AssetBundleLoadingTools for it to work.
