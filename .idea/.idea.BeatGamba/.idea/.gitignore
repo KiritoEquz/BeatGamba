@@ -6,6 +6,10 @@
 /contentModel.xml
 /modules.xml
 /.idea.BeatGamba.iml
+.idea
+obj
+bin 
+*.user
 # Editor-based HTTP Client requests
 /httpRequests/
 # Datasource local storage ignored files
