@@ -10,11 +10,13 @@
 using System;
 using System.Reflection;
 
+[assembly: System.Runtime.CompilerServices.IgnoresAccessChecksToAttribute("HMLib")]
+[assembly: System.Runtime.CompilerServices.IgnoresAccessChecksToAttribute("HMUI")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Kip")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Gambling, huh?")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("0.0.1.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.0.1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.0.1+20c22b1466cf667be5aca9dedb738d19a4da8f1d")]
 [assembly: System.Reflection.AssemblyProductAttribute("BeatGamba")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BeatGamba")]
 [assembly: System.Reflection.AssemblyVersionAttribute("0.0.1.0")]

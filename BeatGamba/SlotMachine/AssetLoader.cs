@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace BeatGamba.SlotMachine;
 
-public class SMController : MonoBehaviour
+public class AssetLoader : MonoBehaviour
 
 
 {

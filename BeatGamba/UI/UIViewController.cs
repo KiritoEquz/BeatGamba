@@ -15,7 +15,7 @@ internal class UIViewController : BSMLAutomaticViewController
 {
     [Inject] private readonly PluginConfig _config = null!;
 
-    private SMController _smController = new SMController();
+    private AssetLoader _assetLoader = new AssetLoader();
     private GameObject _gambaMachineInstance = null!;
 
     private bool Enabled
@@ -28,11 +28,12 @@ internal class UIViewController : BSMLAutomaticViewController
     {
         if (_gambaMachineInstance)
             return;
-        if (!_smController._slotMachineAsset)
-            _smController.LoadAsset();
+        if (!_assetLoader._slotMachineAsset)
+            _assetLoader.LoadAsset();
         
-        _gambaMachineInstance = Instantiate(_smController._slotMachineAsset, new Vector3(-2f, 0.5f, -1f), Quaternion.Euler(0f, -120f, 0f));
+        _gambaMachineInstance = Instantiate(_assetLoader._slotMachineAsset, new Vector3(-2f, 0.5f, -1f), Quaternion.Euler(0f, -120f, 0f));
         _gambaMachineInstance.AddComponent<GambaMachine>();
+        
         Plugin.Log.Info("Slot machine successfully spawned");
         
     }

@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "zjuk2mzbToo=",
+  "dgSpecHash": "PtPYRcnftyc=",
   "success": true,
   "projectFilePath": "D:\\Kip\\Pets\\BeatGamba\\BeatGamba\\BeatGamba.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kip\\.nuget\\packages\\beatsabermoddingtools.tasks\\2.0.0-beta7\\beatsabermoddingtools.tasks.2.0.0-beta7.nupkg.sha512",
+    "C:\\Users\\Kip\\.nuget\\packages\\bepinex.assemblypublicizer.msbuild\\0.4.1\\bepinex.assemblypublicizer.msbuild.0.4.1.nupkg.sha512",
     "C:\\Users\\Kip\\.nuget\\packages\\microsoft.build.framework\\16.5.0\\microsoft.build.framework.16.5.0.nupkg.sha512",
     "C:\\Users\\Kip\\.nuget\\packages\\microsoft.build.tasks.core\\16.5.0\\microsoft.build.tasks.core.16.5.0.nupkg.sha512",
     "C:\\Users\\Kip\\.nuget\\packages\\microsoft.build.utilities.core\\16.5.0\\microsoft.build.utilities.core.16.5.0.nupkg.sha512",

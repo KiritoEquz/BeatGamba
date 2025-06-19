@@ -33,3 +33,12 @@ D:\Kip\Pets\BeatGamba\BeatGamba\obj\Debug\net472\BeatGamba.dll
 D:\Kip\Pets\BeatGamba\BeatGamba\obj\Debug\net472\BeatGamba.pdb
 D:\Kip\Pets\BeatGamba\BeatGamba\bin\Debug\net472\HMUI.dll
 D:\Kip\Pets\BeatGamba\BeatGamba\bin\Debug\net472\UnityEngine.AssetBundleModule.dll
+D:\Kip\Pets\BeatGamba\BeatGamba\bin\Debug\net472\AsmResolver.DotNet.dll
+D:\Kip\Pets\BeatGamba\BeatGamba\bin\Debug\net472\AsmResolver.PE.File.dll
+D:\Kip\Pets\BeatGamba\BeatGamba\bin\Debug\net472\AsmResolver.PE.dll
+D:\Kip\Pets\BeatGamba\BeatGamba\bin\Debug\net472\AsmResolver.dll
+D:\Kip\Pets\BeatGamba\BeatGamba\bin\Debug\net472\BepInEx.AssemblyPublicizer.MSBuild.dll
+D:\Kip\Pets\BeatGamba\BeatGamba\bin\Debug\net472\BepInEx.AssemblyPublicizer.dll
+D:\Kip\Pets\BeatGamba\BeatGamba\bin\Debug\net472\UnityEngine.PhysicsModule.dll
+D:\Kip\Pets\BeatGamba\BeatGamba\bin\Debug\net472\VRUI.dll
+D:\Kip\Pets\BeatGamba\BeatGamba\obj\Debug\net472\BeatGamba.sourcelink.json

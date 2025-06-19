@@ -51,6 +51,11 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[2.0.0-beta7, )"
+            },
+            "BepInEx.AssemblyPublicizer.MSBuild": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[0.4.1, )"
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"

@@ -12,7 +12,18 @@
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <SourceRoot Include="C:\Users\Kip\.nuget\packages\" />
   </ItemGroup>
+  <ItemGroup Condition=" '$(Language)' == 'C#' AND '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Compile Include="$(NuGetPackageRoot)bepinex.assemblypublicizer.msbuild\0.4.1\contentFiles\cs\any\IgnoresAccessChecksToAttribute.cs" Condition="Exists('$(NuGetPackageRoot)bepinex.assemblypublicizer.msbuild\0.4.1\contentFiles\cs\any\IgnoresAccessChecksToAttribute.cs')">
+      <NuGetPackageId>BepInEx.AssemblyPublicizer.MSBuild</NuGetPackageId>
+      <NuGetPackageVersion>0.4.1</NuGetPackageVersion>
+      <NuGetItemType>Compile</NuGetItemType>
+      <Pack>false</Pack>
+      <Private>False</Private>
+      <Link>IgnoresAccessChecksToAttribute.cs</Link>
+    </Compile>
+  </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)bepinex.assemblypublicizer.msbuild\0.4.1\build\BepInEx.AssemblyPublicizer.MSBuild.props" Condition="Exists('$(NuGetPackageRoot)bepinex.assemblypublicizer.msbuild\0.4.1\build\BepInEx.AssemblyPublicizer.MSBuild.props')" />
     <Import Project="$(NuGetPackageRoot)beatsabermoddingtools.tasks\2.0.0-beta7\build\BeatSaberModdingTools.Tasks.props" Condition="Exists('$(NuGetPackageRoot)beatsabermoddingtools.tasks\2.0.0-beta7\build\BeatSaberModdingTools.Tasks.props')" />
   </ImportGroup>
 </Project>

@@ -46,16 +46,16 @@ public class Slot : MonoBehaviour
         switch (result)
         {
             case Result.Skull:
-                _slotTransform.rotation = Quaternion.Euler(0,90,-31);
+                _slotTransform.localRotation = Quaternion.Euler(0,90,-31);
                 break;
             case Result.Perfect:
-                _slotTransform.rotation = Quaternion.Euler(0,90,-123);
+                _slotTransform.localRotation = Quaternion.Euler(0,90,-123);
                 break;
             case Result.Miss:
-                _slotTransform.rotation = Quaternion.Euler(0,90,-213);
+                _slotTransform.localRotation = Quaternion.Euler(0,90,-213);
                 break;
             case Result.Badcut:
-                _slotTransform.rotation = Quaternion.Euler(0,90,-300);
+                _slotTransform.localRotation = Quaternion.Euler(0,90,-300);
                 break;
         }
     }
