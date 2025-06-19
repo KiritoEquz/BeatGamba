@@ -7,7 +7,6 @@ namespace BeatGamba.SlotMachine.SMLogic;
 public class Slot : MonoBehaviour
 {
     public bool IsRolling { get; private set; } = false;
-    
     public enum Result
     {
         Skull,
@@ -15,9 +14,8 @@ public class Slot : MonoBehaviour
         Miss,
         Perfect
     }
-    
-    
     private Transform _slotTransform = null!;
+    
     public void Awake()
     {
         _slotTransform = GetComponent<Transform>();

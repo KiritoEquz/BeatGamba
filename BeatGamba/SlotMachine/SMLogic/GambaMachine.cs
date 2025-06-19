@@ -31,7 +31,9 @@ internal class GambaMachine : MonoBehaviour
 
     internal void Gamble()
     {
-        Plugin.Log.Info("Gamble method called");
+        if (slots[0].IsRolling)
+            return;
+        
         lever.Pull();
         int result = 0;
 
