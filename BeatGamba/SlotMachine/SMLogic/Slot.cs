@@ -28,17 +28,21 @@ public class Slot : MonoBehaviour
         ShowResult(result);
         IsRolling = false;
     }
-
+    
     IEnumerator RollCoroutine()
     {
-        int rotation = Random.Range(700, 800);
-        for (int i = 0; i < rotation; i++)
+        float totalRotation = 0;
+        float targetRotation = Random.Range(700 * 5f, 800 * 5f);
+
+        while (totalRotation < targetRotation)
         {
-            _slotTransform.Rotate(0,0,5);
+            float rotateAmount = 360 * Time.deltaTime;
+            _slotTransform.Rotate(0, 0, rotateAmount);
+            totalRotation += rotateAmount;
             yield return null;
         }
     }
-
+    
     public void ShowResult(Result result)
     {
         switch (result)
