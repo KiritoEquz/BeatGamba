@@ -19,17 +19,31 @@ public class Lever : MonoBehaviour
 
     IEnumerator PullCoroutine()
     {
-        for (int i = 0; i < 70; i++)
+        float downDuration = 70f / 60f;
+        float downAngle = 70f;
+        float downSpeed = downAngle / downDuration;
+
+        float downRotated = 0f;
+        while (downRotated < downAngle)
         {
-            _leverTransform.Rotate(0,0,1);
+            float delta = downSpeed * Time.deltaTime;
+            _leverTransform.Rotate(0, 0, delta);
+            downRotated += delta;
             yield return null;
         }
-        
+    
         yield return new WaitForSeconds(0.6f);
 
-        for (int i = 0; i < 280; i++)
+        float upDuration = 280f / 60f;
+        float upAngle = 70f;
+        float upSpeed = upAngle / upDuration;
+
+        float upRotated = 0f;
+        while (upRotated < upAngle)
         {
-            _leverTransform.Rotate(0,0,-0.25f);
+            float delta = upSpeed * Time.deltaTime;
+            _leverTransform.Rotate(0, 0, -delta);
+            upRotated += delta;
             yield return null;
         }
     }
