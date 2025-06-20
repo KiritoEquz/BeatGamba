@@ -12,8 +12,12 @@ Implement modifiers rolls feature
 
 ## Installation
 
-Download the mod dll and put it into plugins folder. Download the Asset zip archive and put the "Asset" folder in it into your BeatSaber game directory. After that in the Main Menu a BeatGamba button should appear on the left.
+Download an archive from the latest release and put 2 folders from it to your BeatSaber directory.
 
 ## Dependencies
 
+**Supported Version: 1.39.0**
+
 Requires BSML, SiraUtil and AssetBundleLoadingTools for it to work.
+
+"Load unsupported shaders" setting in AssetBundleLoadingTools must be enabled.
