@@ -26,6 +26,7 @@ public class Slot : MonoBehaviour
     public IEnumerator Roll(Result result)
     {
         IsRolling = true;
+        LastResult = (int)result;
         yield return StartCoroutine("RollCoroutine");
         ShowResult(result);
         IsRolling = false;
