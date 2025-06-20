@@ -7,6 +7,7 @@ namespace BeatGamba.SlotMachine.SMLogic;
 
 internal class GambaMachine : MonoBehaviour
 {
+    private float k;
     internal Lever lever { get; private set; } = null!;
     internal Slot[] slots { get; private set; } = new Slot[3];
 
