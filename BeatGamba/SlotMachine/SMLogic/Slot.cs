@@ -37,7 +37,7 @@ public class Slot : MonoBehaviour
 
         while (totalRotation < targetRotation)
         {
-            float rotateAmount = 360 * Time.deltaTime;
+            float rotateAmount = 360 * Time.deltaTime * speedMultiplier;
             _slotTransform.Rotate(0, 0, rotateAmount);
             totalRotation += rotateAmount;
             yield return null;
