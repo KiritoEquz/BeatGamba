@@ -5,6 +5,7 @@ namespace BeatGamba.SlotMachine.SMLogic;
 
 public class Lever : MonoBehaviour
 {
+    private float speedMultiplier = 5f;
     private Transform _leverTransform = null!;
 
     internal void Awake()
@@ -26,7 +27,7 @@ public class Lever : MonoBehaviour
         float downRotated = 0f;
         while (downRotated < downAngle)
         {
-            float delta = downSpeed * Time.deltaTime;
+            float delta = downSpeed * Time.deltaTime * speedMultiplier;
             _leverTransform.Rotate(0, 0, delta);
             downRotated += delta;
             yield return null;
@@ -41,7 +42,7 @@ public class Lever : MonoBehaviour
         float upRotated = 0f;
         while (upRotated < upAngle)
         {
-            float delta = upSpeed * Time.deltaTime;
+            float delta = upSpeed * Time.deltaTime * speedMultiplier;
             _leverTransform.Rotate(0, 0, -delta);
             upRotated += delta;
             yield return null;

@@ -1,13 +1,14 @@
-﻿using BeatGamba.UI;
+﻿using System.Collections;
+using System.Reflection.Metadata;
+using BeatGamba.UI;
 using UnityEngine;
-using VRUIControls;
 using Random = UnityEngine.Random;
+
 
 namespace BeatGamba.SlotMachine.SMLogic;
 
 internal class GambaMachine : MonoBehaviour
 {
-    private float k;
     internal Lever lever { get; private set; } = null!;
     internal Slot[] slots { get; private set; } = new Slot[3];
 
@@ -34,59 +35,46 @@ internal class GambaMachine : MonoBehaviour
     {
         if (slots[0].IsRolling)
             return;
-        
-        lever.Pull();
-        int result = 0;
+        int[] result = [0,0,0];
+        for (int i = 0; i < 3; i++)
+            result[i] = Random.Range(0, 4);
 
+        StartCoroutine(HandleRoll(result));
+    }
+
+    IEnumerator HandleRoll(int[] result)
+    {
+        lever.Pull();
         for (int i = 0; i < slots.Length; i++)
         {
-            result = Random.Range(0, 4);
-            StartCoroutine(slots[i].Roll((Slot.Result)result));
-            switch (slots[i].LastResult)
-            {
-                case 0:
-                    k+=0.1f;
-                    break;
-                case 1:
-                    k += 0.5f;
-                    break;
-                case 2:
-                    k += 1f;
-                    break;
-                case 3:
-                    k += 3f;
-                    break;
-            }
-            StartCoroutine(ResultCoroutine(k));
-            k = 0; // resets k
+            StartCoroutine(slots[i].Roll((Slot.Result)result[i]));
         }
-
+        yield return new WaitForSeconds(2.5f);
+        
+        if (result[0] == result[1] && result[1] == result[2])
+            StartCoroutine(LogJackpot(result[0]));
     }
-    IEnumerator ResultCoroutine(float k)
+
+    IEnumerator LogJackpot(int result)
     {
-        switch (k)
+        switch (result)
         {
-            case 9f:
-                Plugin.Log.Notice("115");
-                //Plugin.Log.Info(k.ToString()); <- to test conflicts of adding to k
-                break;
-            case 1.5f:
-                Plugin.Log.Notice("Badcut");
-                //Plugin.Log.Info(k.ToString()); <- to test conflicts of adding to k
-                break;
-            case 0.3f:
-                Plugin.Log.Critical("Skulls");
-                //Plugin.Log.Info(k.ToString()); <- to test conflicts of adding to k
-                yield return new WaitForSeconds(17f);
+            case 0:
+                Plugin.Log.Notice("You lost!)");
+                yield return new WaitForSeconds(1f);
                 Application.Quit();
                 break;
-            case 3:
-                Plugin.Log.Notice("Miss");
-                //Plugin.Log.Info(k.ToString()); <- to test conflicts of adding to k
+            case 1:
+                Plugin.Log.Notice("Badcut jackpot");
                 break;
-            default: // basically everything except ^^
+            case 2:
+                Plugin.Log.Notice("Miss jackpot");
+                break;
+            case 3:
+                Plugin.Log.Notice("115 jackpot");
+                break;
+            default:
                 Plugin.Log.Notice("Unluck");
-                //Plugin.Log.Info(k.ToString()); <- to test conflicts of adding to k
                 break;
         }
     }
