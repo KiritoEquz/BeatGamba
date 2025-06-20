@@ -6,7 +6,8 @@ namespace BeatGamba.SlotMachine.SMLogic;
 
 public class Slot : MonoBehaviour
 {
-    private float speedMultiplier = 5f
+    public int LastResult;
+    private float speedMultiplier = 5f;
     public bool IsRolling { get; private set; } = false;
     public enum Result
     {
