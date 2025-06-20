@@ -6,6 +6,7 @@ namespace BeatGamba.SlotMachine.SMLogic;
 
 public class Slot : MonoBehaviour
 {
+    private float speedMultiplier = 5f
     public bool IsRolling { get; private set; } = false;
     public enum Result
     {
@@ -32,7 +33,7 @@ public class Slot : MonoBehaviour
     IEnumerator RollCoroutine()
     {
         float totalRotation = 0;
-        float targetRotation = Random.Range(700 * 5f, 800 * 5f);
+        float targetRotation = Random.Range(700 * speedMultiplier, 800 * speedMultiplier);
 
         while (totalRotation < targetRotation)
         {
