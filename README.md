@@ -17,3 +17,5 @@ Download the mod dll and put it into plugins folder. Download the Asset zip arch
 ## Dependencies
 
 Requires BSML, SiraUtil and AssetBundleLoadingTools for it to work.
+
+"Load unsupported shaders" setting in AssetBundleLoadingTools must be enabled.
