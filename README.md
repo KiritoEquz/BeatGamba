@@ -12,7 +12,7 @@ Implement modifiers rolls feature
 
 ## Installation
 
-Download an archive from the latest release and put 2 folders from it to your BeatSaber directory.
+Download the dll from the latest release and put it to Plugins folder in your Beat Saber directory.
 
 ## Dependencies
 
