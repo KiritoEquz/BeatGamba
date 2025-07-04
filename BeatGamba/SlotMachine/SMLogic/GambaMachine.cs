@@ -1,8 +1,9 @@
 ﻿using System.Collections;
-using System.Reflection.Metadata;
+using System.Collections.Generic;
 using BeatGamba.UI;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using BeatGamba.SlotMachine.SoundLogic;
 
 
 namespace BeatGamba.SlotMachine.SMLogic;
@@ -11,6 +12,8 @@ internal class GambaMachine : MonoBehaviour
 {
     internal Lever lever { get; private set; } = null!;
     internal Slot[] slots { get; private set; } = new Slot[3];
+    
+    internal SoundController soundController { get; private set; } = null!;
 
 
     public void Start()
@@ -27,7 +30,9 @@ internal class GambaMachine : MonoBehaviour
         
         slotTransform = transform.Find("Right slot");
         slots[2] = slotTransform.gameObject.AddComponent<Slot>();
-
+        
+        gameObject.AddComponent<AudioSource>();
+        soundController = gameObject.AddComponent<SoundController>();
         pointerEventsHandler.PointerDownEvent += (_,_) => Gamble();
     }
 
@@ -35,6 +40,8 @@ internal class GambaMachine : MonoBehaviour
     {
         if (slots[0].IsRolling)
             return;
+        
+        soundController.PlayRollClip();
         int[] result = [0,0,0];
         for (int i = 0; i < 3; i++)
             result[i] = Random.Range(0, 4);
@@ -45,14 +52,24 @@ internal class GambaMachine : MonoBehaviour
     IEnumerator HandleRoll(int[] result)
     {
         lever.Pull();
+        
+        List<YieldInstruction> slotRollAnimations = new List<YieldInstruction>();
         for (int i = 0; i < slots.Length; i++)
         {
-            StartCoroutine(slots[i].Roll((Slot.Result)result[i]));
+            YieldInstruction rollAnimation = StartCoroutine(slots[i].Roll((Slot.Result)result[i]));
+            slotRollAnimations.Add(rollAnimation);
         }
-        yield return new WaitForSeconds(2.5f);
         
+        foreach (var anim in slotRollAnimations)
+            yield return anim;
+        
+        soundController.StopRollClip();
+
         if (result[0] == result[1] && result[1] == result[2])
+        {
+            soundController.PlayJackpotClip();
             StartCoroutine(LogJackpot(result[0]));
+        }
     }
 
     IEnumerator LogJackpot(int result)
@@ -61,8 +78,11 @@ internal class GambaMachine : MonoBehaviour
         {
             case 0:
                 Plugin.Log.Notice("You lost!)");
-                yield return new WaitForSeconds(1f);
-                Application.Quit();
+                if (Plugin.Config.CrashEnabled)
+                {
+                    yield return new WaitForSeconds(1f);
+                    Application.Quit();
+                }
                 break;
             case 1:
                 Plugin.Log.Notice("Badcut jackpot");

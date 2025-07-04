@@ -4,7 +4,7 @@
         <horizontal bg="panel-top" pad-left="15" pad-right="15" horizontal-fit="PreferredSize">
             <text text="BeatGamba" align="Center" font-size="8"/>
         </horizontal>
-        <toggle-setting value="Enabled" text="Enabled" apply-on-change="true"/>
+        <toggle-setting value="CrashEnabled" text="Enable crash on 3 skulls" apply-on-change="true"/>
         <button on-click="SpawnGamba" text="Gamble"/>
         <button on-click="DestroyGamba" text="Stop gambling"/>
     </vertical>

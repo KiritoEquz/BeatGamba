@@ -1,5 +1,6 @@
 ﻿using BeatGamba.SlotMachine;
 using BeatGamba.SlotMachine.SMLogic;
+using BeatGamba.SlotMachine.SoundLogic;
 using BeatSaberMarkupLanguage.Attributes;
 using BeatSaberMarkupLanguage.ViewControllers;
 using TMPro;
@@ -14,35 +15,33 @@ namespace BeatGamba.UI;
 internal class UIViewController : BSMLAutomaticViewController
 {
     [Inject] private readonly PluginConfig _config = null!;
+    
+    internal GameObject gambaMachineInstance = null!;
+    
 
-    private AssetLoader _assetLoader = new AssetLoader();
-    private GameObject _gambaMachineInstance = null!;
-
-    private bool Enabled
+    private bool CrashEnabled
     {
-        get => _config.Enabled;
-        set => _config.Enabled = value;
+        get => _config.CrashEnabled;
+        set => _config.CrashEnabled = value;
     }
 
     private void SpawnGamba()
     {
-        if (_gambaMachineInstance)
+        if (gambaMachineInstance)
             return;
-        if (!_assetLoader._slotMachineAsset)
-            _assetLoader.LoadAsset();
         
-        _gambaMachineInstance = Instantiate(_assetLoader._slotMachineAsset, new Vector3(-2f, 0.5f, -1f), Quaternion.Euler(0f, -120f, 0f));
-        _gambaMachineInstance.AddComponent<GambaMachine>();
+        gambaMachineInstance = Instantiate(AssetLoader._slotMachineAsset, new Vector3(-2f, 0.5f, -1f), Quaternion.Euler(0f, -120f, 0f));
         
+        gambaMachineInstance.AddComponent<GambaMachine>();
         Plugin.Log.Info("Slot machine successfully spawned");
         
     }
 
     private void DestroyGamba()
     {
-        if (_gambaMachineInstance)
+        if (gambaMachineInstance)
         {
-            Destroy(_gambaMachineInstance);
+            Destroy(gambaMachineInstance);
             Plugin.Log.Info("Slot machine successfully destroyed");
         }
     }

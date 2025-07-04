@@ -1,9 +1,11 @@
 ﻿using BeatGamba.Installers;
+using BeatGamba.SlotMachine;
 using IPA;
 using IPA.Config;
 using IPA.Config.Stores;
 using IPA.Loader;
 using IPA.Logging;
+using JetBrains.Annotations;
 using SiraUtil.Zenject;
 
 
@@ -14,6 +16,7 @@ internal class Plugin
 {
     internal static Plugin Instance { get; private set; } = null!;
     internal static Logger Log { get; private set; } = null!;
+    internal static PluginConfig Config { get; private set; } = null!;
     
     
     [Init]
@@ -24,13 +27,20 @@ internal class Plugin
         Instance = this;
         Log = log;
         
-        var pluginConfig = config.Generated<PluginConfig>();
+        Config = config.Generated<PluginConfig>();
         
         zenjector.UseLogger(log);
         
         //Installers
-        zenjector.Install<AppInstaller>(Location.App, pluginConfig);
+        zenjector.Install<AppInstaller>(Location.App, Config);
         zenjector.Install<MenuInstaller>(Location.Menu);
         
+    }
+
+    [OnStart]
+    [UsedImplicitly]
+    public void OnApplicationStart()
+    {
+        AssetLoader.Initialize();
     }
 }
