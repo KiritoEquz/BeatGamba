@@ -4,9 +4,9 @@ Basic BeatSaber gambling mode
 
 For now it's just a cosmetics mod. In the future it might get more functional.
 
-## TODO
+You can support the mod here: https://boosty.to/kipbs
 
-Add sounds and stuff
+## TODO
 
 Implement modifiers rolls feature
 
