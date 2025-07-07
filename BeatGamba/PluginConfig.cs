@@ -31,5 +31,5 @@ internal class PluginConfig
     public virtual void CopyFrom(PluginConfig other) { }
     */
     
-    public virtual bool Enabled { get; set; } = false;
+    public virtual bool CrashEnabled { get; set; } = false;
 }
